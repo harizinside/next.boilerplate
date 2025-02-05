@@ -1,5 +1,4 @@
 import MdxLayout from "@/app/mdx-page/layout";
-import { Input } from "@headlessui/react";
 
 export default async function Page({
   params,
@@ -11,9 +10,9 @@ export default async function Page({
     const { default: Post } = await import(`@/content/${slug}.mdx`);
     return (
       <>
-        <Input type="number" name="full_number" />
-        <Input type="file" name="full_file" />
-        <Input type="text" name="full_name" />
+        <input type="number" name="full_number" />
+        <input type="file" name="full_file" />
+        <input type="text" name="full_name" />
 
         <MdxLayout>
           <Post />

@@ -9,15 +9,7 @@ import Image, { ImageProps } from "next/image";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold my-4 text-primary">{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold my-3 text-secondary">{children}</h2>
-    ),
-    p: ({ children }) => (
-      <p className="my-4 text-lg text-gray-700">{children}</p>
-    ),
+
     img: (props) => (
       // eslint-disable-next-line jsx-a11y/alt-text
       <Image
