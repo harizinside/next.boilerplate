@@ -1,7 +1,6 @@
-@import "tailwindcss";
-@plugins "@tailwindcss/form";
-@plugins "@tailwindcss/typography";
-@plugins "@tailwindcss/aspect-ratio";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
