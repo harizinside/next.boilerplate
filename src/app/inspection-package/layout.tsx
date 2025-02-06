@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "@/app/globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+const nuninto = Nunito({
+  weight: ["200", "300", "400", "500", "600", "700", "800", "1000"],
   style: "normal",
   subsets: ["latin"],
 });
@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.className} antialiased`}>
-        {children}
-      </body>
+      <body className={`${nuninto.className} antialiased`}>{children}</body>
     </html>
   );
 }
