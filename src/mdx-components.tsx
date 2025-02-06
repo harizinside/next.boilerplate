@@ -1,26 +1,25 @@
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
+import ReadMore from "@/app/components/read-more";
+import FileImage from "@/app/components/file-image";
 
 // Custom MDX components for styling and enhanced functionality
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    // Read More
+    ReadMore,
     // Headings
-    h1: ({ children }) => (
-      <h1 className="text-4xl font-bold my-4">{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl font-semibold my-3">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl font-medium my-2">{children}</h3>
-    ),
+    h1: ({ children }) => <h1 className="my-1 font-bold ">{children}</h1>,
+    h2: ({ children }) => <h2 className="my-1 font-semibold">{children}</h2>,
+    h3: ({ children }) => <h3 className="my-1 font-medium">{children}</h3>,
 
     // Paragraph
     p: ({ children }) => (
-      <p className="my-4 text-lg text-gray-700 leading-relaxed">{children}</p>
+      <p className="text-lg text-gray-700 leading-relaxed">{children}</p>
     ),
 
     // Images
+    FileImage,
     img: (props) => (
       // eslint-disable-next-line jsx-a11y/alt-text
       <Image
@@ -30,7 +29,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...(props as ImageProps)}
       />
     ),
-
     // Links
     a: ({ href, children }) => (
       <a
@@ -45,16 +43,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Blockquote
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 pl-4 italic my-6 text-gray-600 border-gray-400">
+      <blockquote className="border-l-4 pl-4 italic text-gray-600 border-gray-400">
         {children}
       </blockquote>
     ),
 
     // Lists
-    ul: ({ children }) => <ul className="list-disc pl-6 my-4">{children}</ul>,
-    ol: ({ children }) => (
-      <ol className="list-decimal pl-6 my-4">{children}</ol>
-    ),
+    ul: ({ children }) => <ul className="list-disc pl-6 ">{children}</ul>,
+    ol: ({ children }) => <ol className="list-decimal pl-6 ">{children}</ol>,
     li: ({ children }) => <li className="mb-1">{children}</li>,
 
     // Table

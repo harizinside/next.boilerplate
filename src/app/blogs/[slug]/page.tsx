@@ -1,5 +1,3 @@
-import MdxLayout from "@/app/mdx-page/layout";
-
 export default async function Page({
   params,
 }: {
@@ -13,10 +11,11 @@ export default async function Page({
         <input type="number" name="full_number" />
         <input type="file" name="full_file" />
         <input type="text" name="full_name" />
+        <input type="time" name="full_time" placeholder="hoa" />
 
-        <MdxLayout>
+        <div className="prose lg:prose-md">
           <Post />
-        </MdxLayout>
+        </div>
       </>
     );
   } catch (error) {

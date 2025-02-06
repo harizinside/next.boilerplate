@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     mdxRs: false,
   },
   reactStrictMode: true,
+  images: {},
 };
 
 const withMDX = createMDX({
@@ -20,11 +21,11 @@ const withMDX = createMDX({
     remarkPlugins: [["remark-gfm"]],
     rehypePlugins: [
       // @ts-expect-error wrong types
-      ["rehype-slug"],
-      // @ts-expect-error wrong types
       ["rehype-highlight"],
       // @ts-expect-error wrong types
-      ["rehype-katex", { strict: true, throwOnError: true }],
+      ["rehype-katex"],
+      // @ts-expect-error wrong types
+      ["rehype-slug"],
     ],
   },
 });
