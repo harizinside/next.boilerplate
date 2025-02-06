@@ -1,113 +1,120 @@
-# Human Metapneumovirus (HMPV)
+# A demo of `react-markdown`
 
-## Pengantar
+`react-markdown` is a markdown component for React.
 
-Human Metapneumovirus (**HMPV/hMPV**) adalah virus RNA untai tunggal berpolaritas negatif yang termasuk dalam famili *Pneumoviridae*. Virus ini memiliki hubungan erat dengan *Avian Metapneumovirus* (AMPV) subkelompok C. HMPV pertama kali ditemukan pada tahun 2001 di Belanda menggunakan teknik **RAP-PCR** (*RNA Arbitrarily Primed PCR*), yang memungkinkan deteksi virus baru.
+👉 Changes are re-rendered as you type.
 
-Hingga tahun 2016, HMPV tercatat sebagai penyebab kedua terbanyak penyakit saluran pernapasan akut pada anak-anak di bawah 5 tahun di Amerika Serikat, setelah *Respiratory Syncytial Virus* (**RSV**). HMPV memiliki banyak kesamaan dengan RSV dalam gejala dan pola penyebarannya.
+👈 Try writing some markdown on the left.
 
-## 🦠 Karakteristik
-- **Keluarga:** *Pneumoviridae*.
-- **Menyerang sistem pernapasan** → dapat menyebabkan komplikasi seperti bronkitis atau pneumonia.
-- **Gejala mirip** dengan infeksi pernapasan lainnya.
+## Overview
 
-## 🤧 Gejala
-- ✅ Batuk
-- ✅ Pilek
-- ✅ Demam
-- ✅ Sakit tenggorokan
-- ✅ Sesak napas
-- ✅ *Wheezing* (mengi)
-- ✅ Diare (pada anak-anak)
-- ✅ Muntah
-- ✅ Kelelahan
+* Follows [CommonMark](https://commonmark.org)
+* Optionally follows [GitHub Flavored Markdown](https://github.github.com/gfm/)
+* Renders actual React elements instead of using `dangerouslySetInnerHTML`
+* Lets you define your own components (to render `MyHeading` instead of `'h1'`)
+* Has a lot of plugins
 
-[MDX](https://mdxjs.com "title")
+## Contents
 
-> A greater than…
+Here is an example of a plugin in action
+([`remark-toc`](https://github.com/remarkjs/remark-toc)).
+**This section is replaced by an actual table of contents**.
 
-A backslash\
-before a line break…
+## Syntax highlighting
 
-Some `backticks` for inline.
+Here is an example of a plugin to highlight code:
+[`rehype-highlight`](https://github.com/rehypejs/rehype-highlight).
 
-```javascript
-backtick.fences('for blocks')
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Markdown from 'react-markdown'
+import rehypeHighlight from 'rehype-highlight'
+
+const markdown = `
+# Your markdown here
+`
+
+ReactDOM.render(
+  <Markdown rehypePlugins={[rehypeHighlight]}>{markdown}</Markdown>,
+  document.querySelector('#content')
+)
 ```
 
-Some *asterisks* for emphasis.
+Pretty neat, eh?
 
-## Two number signs…
+## GitHub flavored markdown (GFM)
 
+For GFM, you can *also* use a plugin:
+[`remark-gfm`](https://github.com/remarkjs/react-markdown#use).
+It adds support for GitHub-specific extensions to the language:
+tables, strikethrough, tasklists, and literal URLs.
 
-| foo | bar |
-| --- | --- |
-| baz | bim |
+These features **do not work by default**.
+👆 Use the toggle above to add the plugin.
 
+| Feature    | Support              |
+| ---------: | :------------------- |
+| CommonMark | 100%                 |
+| GFM        | 100% w/ `remark-gfm` |
 
-| Item              | In Stock | Price |
-| :---------------- | :------: | ----: |
-| Python Hat        |   True   | 23.99 |
-| SQL Hat           |   True   | 23.99 |
-| Codecademy Tee    |  False   | 19.99 |
-| Codecademy Hoodie |  False   | 42.99 |
+~~strikethrough~~
 
-## 🎯 Kelompok Risiko
-Orang dengan risiko lebih tinggi terkena HMPV meliputi:
+* [ ] task list
+* [x] checked item
 
-- 🧒 **Anak-anak** di bawah 5 tahun.
-- 👴 **Lansia** di atas 65 tahun.
-- 🫁 **Penderita penyakit pernapasan kronis**.
-- 🛡️ **Penderita gangguan imunodefisiensi**.
-- 💉 **Pasca operasi** dengan sistem imun yang lemah, termasuk penderita **diabetes, gangguan pernapasan, atau penyakit jantung**.
+https://example.com
 
-## 🚨 Cara Penularan
-⏳ Masa inkubasi: **3 - 6 hari**
+## HTML in markdown
 
-1️⃣ **Kontak langsung** → Sekresi dari batuk & bersin, berjabat tangan, atau menyentuh benda terkontaminasi.
-2️⃣ **Udara** → Menghirup droplet yang mengandung virus.
-3️⃣ **Permukaan terkontaminasi** → Virus dapat bertahan di permukaan benda selama beberapa jam.
+⚠️ HTML in markdown is quite unsafe, but if you want to support it, you can
+use [`rehype-raw`](https://github.com/rehypejs/rehype-raw).
+You should probably combine it with
+[`rehype-sanitize`](https://github.com/rehypejs/rehype-sanitize).
 
+<blockquote>
+  👆 Use the toggle above to add the plugin.
+</blockquote>
 
-## 🏥 Diagnosis
-🔬 **Tes PCR** dan **uji amplifikasi asam nukleat (NAAT)**.
-🧪 **Tes antigen** (imunofluoresensi, enzim immunoassay).
-🩺 **Pemeriksaan fisik** oleh dokter.
+## Components
 
-## 💊 Pengobatan
-❌ **Belum ada vaksin atau pengobatan khusus**.
-✔ **Penanganan suportif**, seperti:
-- 🛌 Istirahat cukup.
-- 💧 Minum banyak cairan.
-- 🌡 Mengonsumsi obat antipiretik.
-- 🤧 Menggunakan obat batuk.
-- 🌬 *Oxygen therapy* jika diperlukan.
-- 💨 *Humidifier* untuk melembapkan udara.
-📍 **Kasus berat** → Memerlukan rawat inap, terapi oksigen, atau alat bantu pernapasan.
+You can pass components to change things:
 
-::read-more
----
-message: Rahasia Hidup Sehat Imunitas Prima dengan Cara Sederhana
-href: https://rheinmedika.com/blogs/rahasia-hidup-sehat-imunitas-prima-dengan-cara-sederhana
----
-::
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Markdown from 'react-markdown'
+import MyFancyRule from './components/my-fancy-rule.js'
 
-## 🛑 Pencegahan
-🧼 **Cuci tangan** dengan sabun & air mengalir.
-😷 **Gunakan masker** di tempat umum.
-🚫 **Hindari menyentuh wajah** dengan tangan kotor.
-👥 **Hindari kontak dengan penderita**.
-🔬 **Belum ada terapi antivirus atau vaksin khusus**.
-🏠 **Tinggal di rumah saat sakit**.
+const markdown = `
+# Your markdown here
+`
 
-## ❓ Apakah HMPV Berpotensi Menjadi Pandemi?
-Menurut epidemiolog **Dicky Budiman**, HMPV **tidak berpotensi menjadi pandemi** seperti *Influenza A* karena:
+ReactDOM.render(
+  <Markdown
+    components={{
+      // Use h2s instead of h1s
+      h1: 'h2',
+      // Use a component instead of hrs
+      hr(props) {
+        const {node, ...rest} = props
+        return <MyFancyRule {...rest} />
+      }
+    }}
+  >
+    {markdown}
+  </Markdown>,
+  document.querySelector('#content')
+)
+```
 
-- Penyebarannya lebih lambat.
-- Tingkat keparahan umumnya ringan.
+lahelulah
 
-## 📌 Sumber Referensi
-1️⃣ [Liputan6](https://www.liputan6.com/health/read/5864034/kasus-hmpv-merebak-di-china-kemenkes-ri-ingatkan-langkah-pencegahan)
-2️⃣ [Kemenkes RS Radjiman Wediodiningrat](https://www.suara.com/news/2025/01/05/211223/menyebar-di-china-kemenkes-pastikan-belum-ada-infeksi-hmpv-di-indonesia-masyarakat-tetap-harus-jaga-kesehatan)
-3️⃣ [Kompas](https://www.kompas.com/tren/read/2025/01/09/131500265/ramai-dibicarakan-apa-saja-yang-perlu-anda-ketahui-tentang-hmpv-)
-4️⃣ [Tribun Jateng](https://jateng.tribunnews.com/2025/01/09/infografis-menkes-hmpv-tidak-menyebabkan-kematian)
+## More info?
+
+Much more info is available in the
+[readme on GitHub](https://github.com/remarkjs/react-markdown)!
+
+***
+
+A component by [Espen Hovlandsdal](https://espen.codes/)
