@@ -82,9 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </pre>
     ),
     code: ({ children }) => (
-      <code className="bg-gray-200 px-1 py-0.5 rounded text-red-600">
-        {children}
-      </code>
+      <code className="px-1 py-0.5 rounded">{children}</code>
     ),
 
     ...components,
