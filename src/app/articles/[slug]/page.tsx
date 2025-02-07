@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | My Website",
+  description: "Read the latest blog posts.",
+};
+
 export default async function Page({
   params,
 }: {

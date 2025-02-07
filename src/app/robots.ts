@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
     ],
     sitemap: [
       `${process.env.APP_URL}/sitemap.xml`,
-      `${process.env.APP_URL}/blogs/sitemap.xml`,
+      `${process.env.APP_URL}/articles/sitemap.xml`,
       `${process.env.APP_URL}/services/sitemap.xml`,
       `${process.env.APP_URL}/inspection-package/sitemap.xml`,
     ],

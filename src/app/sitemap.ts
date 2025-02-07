@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("February 01, 2024 20:15:30"),
     },
     {
-      url: `${process.env.APP_URL}/blog`,
+      url: `${process.env.APP_URL}/articles`,
       lastModified: new Date("February 01, 2024 20:15:30"),
     },
     {
