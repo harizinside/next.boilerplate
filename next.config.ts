@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
+import createNextIntlPlugin from "next-intl/plugin";
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -13,6 +14,10 @@ const nextConfig: NextConfig = {
   images: {},
 };
 
+// i18nPath is optional, and defaults to "i18n"
+const withNextIntl = createNextIntlPlugin();
+
+// Create MDX plugin
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   // Add markdown plugins here, as desired
@@ -31,4 +36,4 @@ const withMDX = createMDX({
 });
 
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig);
+export default withNextIntl(withMDX(nextConfig));

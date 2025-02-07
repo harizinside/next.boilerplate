@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: "Blog | My Website",
@@ -6,9 +7,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const t = useTranslations("HomePage");
   return (
     <>
-      <h1>Home</h1>
+      <h1>{t("title")}</h1>
       <p>Welcome to the home page</p>
     </>
   );

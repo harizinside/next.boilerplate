@@ -1,5 +1,5 @@
 {
-    "products": {
-        "cart": "Masukan ke Keranjang"
+    "HomePage": {
+      "title": "Halo dunia!"
     }
 }

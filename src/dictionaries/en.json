@@ -1,5 +1,5 @@
 {
-    "products": {
-        "cart": "Add to Cart"
+    "HomePage": {
+      "title": "Hello world!"
     }
 }
