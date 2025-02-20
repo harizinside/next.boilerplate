@@ -23,7 +23,7 @@ const withMDX = createMDX({
   // Add markdown plugins here, as desired
   options: {
     // @ts-expect-error wrong types
-    remarkPlugins: [["remark-gfm"]],
+    remarkPlugins: [["remark-gfm"], ["remark-math"]],
     rehypePlugins: [
       // @ts-expect-error wrong types
       ["rehype-highlight"],

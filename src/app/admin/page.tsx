@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | My Website",
-  description: "Read the latest blog posts.",
+  title: "Boilerplate | Next.JS",
+  description:
+    "NextJS Boilerplate, web yang dibangun untuk kebutuhan Fullstack.",
 };
 
 export default function Page() {

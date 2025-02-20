@@ -15,11 +15,6 @@ export default async function Page({
     const { default: Post } = await import(`@/content/${slug}.mdx`);
     return (
       <>
-        <input type="number" name="full_number" />
-        <input type="file" name="full_file" />
-        <input type="text" name="full_name" />
-        <input type="time" name="full_time" placeholder="hoa" />
-
         <div className="prose lg:prose-md">
           <Post />
         </div>

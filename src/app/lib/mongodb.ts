@@ -1,11 +1,11 @@
 import "server-only";
 import { MongoClient, MongoClientOptions } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
+if (!Bun.env.MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable");
 }
 
-const uri = process.env.MONGODB_URI;
+const uri = Bun.env.MONGODB_URI;
 const options: MongoClientOptions = {};
 
 let client: MongoClient;
@@ -17,7 +17,7 @@ interface Global {
 
 declare const global: Global;
 
-if (process.env.NODE_ENV === "development") {
+if (Bun.env.NODE_ENV === "development") {
   // In development, use a global variable to maintain the MongoDB connection across hot reloads
   if (!global._mongoClientPromise) {
     client = new MongoClient(uri, options);

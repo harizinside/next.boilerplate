@@ -10,14 +10,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/"],
-        disallow: ["/api", "/consultation", "/administrator", "/open"],
+        disallow: ["/api", "/auth", "/admin"],
       },
     ],
     sitemap: [
-      `${process.env.APP_URL}/sitemap.xml`,
-      `${process.env.APP_URL}/articles/sitemap.xml`,
-      `${process.env.APP_URL}/services/sitemap.xml`,
-      `${process.env.APP_URL}/inspection-package/sitemap.xml`,
+      `${Bun.env.APP_URL}/sitemap.xml`,
+      `${Bun.env.APP_URL}/articles/sitemap.xml`,
     ],
   };
 }

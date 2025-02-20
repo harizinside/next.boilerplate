@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
-import ReadMore from "@/app/components/read-more";
-import FileImage from "@/app/components/file-image";
+import ReadMore from "@/app/components/ReadMore";
+import FileImage from "@/app/components/FileImage";
 
 // Custom MDX components for styling and enhanced functionality
 export function useMDXComponents(components: MDXComponents): MDXComponents {

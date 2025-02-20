@@ -35,7 +35,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 }
 
 async function getMeta() {
-  const url = `${process.env.API_URL}/sitemap/articles`;
+  const params = new URLSearchParams();
+  params.append("requirement", "meta");
+  params.append("limit", "100");
+
+  const url = `${Bun.env.APP_URL}/${Bun.env.APP_API_PREFIX}/${Bun.env.APP_API_VERSION}/articles?${params}`;
+
   try {
     const response = await fetch(url);
     if (!response.ok) {

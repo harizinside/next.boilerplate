@@ -1,10 +1,12 @@
 import { Metadata } from "next";
+import ArticlesList from "./lists";
 
 export const metadata: Metadata = {
-  title: "Blog | My Website",
-  description: "Read the latest blog posts.",
+  title: "Articles | Next.JS",
+  description:
+    "NextJS Boilerplate, web yang dibangun untuk kebutuhan Fullstack.",
 };
 
 export default function Page() {
-  return <h1>Hello Next.js! from Blogs Page</h1>;
+  return <ArticlesList />;
 }

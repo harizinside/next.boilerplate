@@ -1,5 +1,8 @@
-export interface ArticleProps {
-  _id: string;
+import clientPromise from "@/app/lib/mongodb";
+import type { ObjectId } from "mongodb";
+
+interface ArticleProps {
+  _id?: ObjectId;
   title: string;
   slugs: string;
   category: {
@@ -9,13 +12,12 @@ export interface ArticleProps {
   thumbnail: {
     src: string;
     alt: string;
-    source: {
+    source?: {
       url: string;
       description: string;
     };
   };
   description: string;
-  readingTime: string;
   keywords: string[];
   author: {
     name: string;
@@ -31,3 +33,12 @@ export interface ArticleProps {
   createdAt: Date;
   updateAt: Date;
 }
+
+const client = await clientPromise;
+const db = client.db(Bun.env.MONGODB_DBS);
+const ArticlesModel = db.collection<ArticleProps>("articles");
+
+await ArticlesModel.createIndex({ slugs: 1 }, { unique: true });
+
+export type { ArticleProps };
+export { db, ArticlesModel };

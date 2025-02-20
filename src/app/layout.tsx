@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
+import { dehydrate } from "react-query/hydration";
+import { getQueryClient } from "@/app/lib/get-query-client";
+import { HydrateClient } from "@/app/lib/hydrate-client";
 import "@/app/globals.css";
 
 const nuninto = Nunito({
@@ -17,34 +20,34 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Klinik Utama Rhein Medika",
+  title: "NextJS Boilerplate",
   description:
-    "Klinik Utama Rhein Medika, anak perusahaan PT. EIH, berdiri Mei 2022, fokus pada layanan diagnostik laboratorium dan kesehatan berkualitas.",
-  keywords: ["Klinik Utama Rhein Medika", "Layanan diagnostik", "laboratorium"],
-  authors: [{ name: "Klinik Utama Rhein Medika" }],
+    "NextJS Boilerplate, web yang dibangun untuk kebutuhan Fullstack",
+  keywords: ["NextJS Boilerplate", "Layanan diagnostik", "laboratorium"],
+  authors: [{ name: "NextJS Boilerplate" }],
   robots: "index, follow",
   alternates: {
-    canonical: "https://rheinmedika.com",
+    canonical: Bun.env.APP_URL,
   },
   icons: {
-    icon: "/icon-rhein.png",
-    apple: "/icon-rhein.png",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
   openGraph: {
-    url: "https://rheinmedika.com",
+    url: Bun.env.APP_URL,
     type: "website",
-    siteName: "Klinik Utama Rhein Medika",
-    title: "Klinik Utama Rhein Medika",
+    siteName: "NextJS Boilerplate",
+    title: "NextJS Boilerplate",
     description:
-      "Klinik Utama Rhein Medika, anak perusahaan PT. EIH, berdiri Mei 2022, fokus pada layanan diagnostik laboratorium dan kesehatan berkualitas.",
-    images: ["https://rheinmedika.com/logo-rhein.png"],
+      "NextJS Boilerplate, web yang dibangun untuk kebutuhan Fullstack",
+    images: [`${Bun.env.APP_URL}/icon.png`],
     locale: "id_ID",
   },
   twitter: {
-    title: "Klinik Utama Rhein Medika",
+    title: "NextJS Boilerplate",
     description:
-      "Klinik Utama Rhein Medika, anak perusahaan PT. EIH, berdiri Mei 2022, fokus pada layanan diagnostik laboratorium dan kesehatan berkualitas.",
-    images: ["https://rheinmedika.com/logo-rhein.png"],
+      "NextJS Boilerplate, web yang dibangun untuk kebutuhan Fullstack",
+    images: [`${Bun.env.APP_URL}/icon.png`],
     card: "summary",
   },
 };
@@ -60,10 +63,15 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  const queryClient = getQueryClient();
+  const dehydratedState = dehydrate(queryClient);
+
   return (
     <html lang={locale} dir="ltr">
       <NextIntlClientProvider messages={messages}>
-        <body className={`${nuninto.className} antialiased`}>{children}</body>
+        <body className={`${nuninto.className} antialiased`}>
+          <HydrateClient state={dehydratedState}>{children}</HydrateClient>
+        </body>
       </NextIntlClientProvider>
     </html>
   );
