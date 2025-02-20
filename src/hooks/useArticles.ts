@@ -21,7 +21,6 @@ export function useArticles(
   limit = 10,
   skip = 0
 ): UseQueryResult<ArticleProps[], unknown> {
-  console.log("LAHELU");
   return useQuery<ApiResponse, unknown, ArticleProps[]>({
     queryKey: ["articles", limit, skip],
     queryFn: () => fetchArticles(limit, skip),
