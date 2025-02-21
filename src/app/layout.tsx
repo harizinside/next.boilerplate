@@ -2,9 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import { dehydrate } from "react-query/hydration";
-import { getQueryClient } from "@/app/lib/get-query-client";
-import { HydrateClient } from "@/app/lib/hydrate-client";
 import "@/app/globals.css";
 
 const nuninto = Nunito({
@@ -63,15 +60,10 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
-  const queryClient = getQueryClient();
-  const dehydratedState = dehydrate(queryClient);
-
   return (
     <html lang={locale} dir="ltr">
       <NextIntlClientProvider messages={messages}>
-        <body className={`${nuninto.className} antialiased`}>
-          <HydrateClient state={dehydratedState}>{children}</HydrateClient>
-        </body>
+        <body className={`${nuninto.className} antialiased`}>{children}</body>
       </NextIntlClientProvider>
     </html>
   );

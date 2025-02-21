@@ -4,6 +4,7 @@ import type { ObjectId } from "mongodb";
 interface ArticleProps {
   _id?: ObjectId;
   title: string;
+  view: number;
   slugs: string;
   category: {
     name: string;

@@ -12,25 +12,28 @@ export default function Home() {
   const t = useTranslations("HomePage");
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link className="text-blue-600 hover:text-blue-300" href="/">
-              {t("home")}
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-blue-600 hover:text-blue-300"
-              href="/articles"
-            >
-              {t("artikel")}
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <h1>{t("title")}</h1>
-      <p className="font-medium">Welcome to the home page</p>
+      <div className="p-4">
+        <nav>
+          <ul className="list-decimal">
+            <li>
+              <Link className="text-blue-700 hover:text-blue-300" href="/">
+                {t("home")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-blue-700 hover:text-blue-300"
+                href="/articles"
+              >
+                {t("artikel")}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <h1 className="text-3xl font-bold">{t("title")}</h1>
+      <p className="text-sm font-medium">Welcome to the home page</p>
     </>
   );
 }
