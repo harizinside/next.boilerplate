@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import FormLogin from "./form";
 
 export const metadata: Metadata = {
   title: "Blog | My Website",
@@ -6,5 +7,11 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <h1>Hello Next.js! from Sign-in Page</h1>;
+  return (
+    <>
+      <div className="p-6">
+        <FormLogin />
+      </div>
+    </>
+  );
 }
