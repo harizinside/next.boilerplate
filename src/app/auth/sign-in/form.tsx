@@ -1,3 +1,4 @@
+import Alert from "@/app/components/Alerts";
 import {
   Fieldset,
   Legend,
@@ -10,6 +11,7 @@ import {
 export default function Form() {
   return (
     <>
+      <Alert message="This is an alert" type="info" />
       <form action="" className="pt-4">
         <Fieldset>
           <Legend className="text-lg font-bold">Signin</Legend>
